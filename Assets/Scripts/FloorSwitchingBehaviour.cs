@@ -37,7 +37,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        //audioSource = GetComponent<AudioSource>();
         defaultCol[0] = colA;
         defaultCol[1] = colB;
         defaultCol[2] = colC;
@@ -150,12 +150,16 @@ public class FloorSwitchingBehaviour : MonoBehaviour
         tileCountdown.HideTile(floor.GetComponent<Tilemap>());//floorB
         //set collider inactive
         floor.GetComponent<TilemapCollider2D>().enabled = false;
+
+        //GÖR OUTLINE FAINTLY LESS SATURATED
+        /*
         if(floor!=floorC)
         {
             Color oldC = floor.GetComponent<Tilemap>().color;
             Color newC = new Color(oldC.r + 0.5f, oldC.g + 0.5f, oldC.b + 0.5f);//gör hidden/outlines marginnaly lighter and less saturated
             floor.GetComponent<Tilemap>().color = newC;
         }
+        */
         
 
     }
