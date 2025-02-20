@@ -21,15 +21,19 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
     //[SerializeField] private bool left;
     [SerializeField] private Directions dir;
     private bool hasBeenTriggered;
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if(hasBeenTriggered)
         {
             //kör move fast reverse
+            Move(false);
             hasBeenTriggered = false;
         }
-
-        Move();
+        else
+        {
+            Move(true);
+            hasBeenTriggered = true;
+        }
     }
 
     private void MoveAlongX(int posOrNeg)
@@ -42,23 +46,45 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
         transform.position = new Vector3(transform.position.x, transform.position.y - (posOrNeg * 11)) + offset;
     }
 
-    private void Move()
+    private void Move(bool enter)
     {
-        switch(dir)
+        if (enter) //NORMAL WAY
         {
-            case Directions.Left:
-                cam.transform.position = new Vector3(cam.transform.position.x - 14, cam.transform.position.y) + offset;
-                return;
-            case Directions.Right:
-                cam.transform.position = new Vector3(cam.transform.position.x + 14, cam.transform.position.y) + offset;
-                return;
-            case Directions.Up:
-                cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 11) + offset;
-                return;
-            case Directions.Down:
-                cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y - 11) + offset;
-                return;
+            switch (dir)
+            {
+                case Directions.Left:
+                    cam.transform.position = new Vector3(cam.transform.position.x - 14, cam.transform.position.y) + offset;
+                    return;
+                case Directions.Right:
+                    cam.transform.position = new Vector3(cam.transform.position.x + 14, cam.transform.position.y) + offset;
+                    return;
+                case Directions.Up:
+                    cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 11) + offset;
+                    return;
+                case Directions.Down:
+                    cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y - 11) + offset;
+                    return;
+            }
         }
+        else //REVERSED
+        {
+            switch (dir)
+            {
+                case Directions.Left:
+                    cam.transform.position = new Vector3(cam.transform.position.x + 14, cam.transform.position.y) + offset;
+                    return;
+                case Directions.Right:
+                    cam.transform.position = new Vector3(cam.transform.position.x - 14, cam.transform.position.y) + offset;
+                    return;
+                case Directions.Up:
+                    cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y - 11) + offset;
+                    return;
+                case Directions.Down:
+                    cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 11) + offset;
+                    return;
+            }
+        }
+
 
     }
 
