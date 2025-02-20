@@ -91,10 +91,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && CheckIfGrounded())
         {
-            Jump();
+
             //switchFloor
             //Invoke("SwitchFloor", 0.1f);
             m_FloorSwitching.SwitchFloor();
+            Jump();
         }
 
 
