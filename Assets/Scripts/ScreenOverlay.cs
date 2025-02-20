@@ -24,7 +24,7 @@ public class ScreenOverlay : MonoBehaviour
         Vector3 newPosition = target.position + offset;
         transform.position = newPosition;
 
-        Grow();
+        Shrink();
         //transform.position = new Vector3(newPosition.x, transform.position.y) + offset; //the camera will not move along the Y axis
         //transform.position = newPosition;
     }
@@ -32,12 +32,15 @@ public class ScreenOverlay : MonoBehaviour
     private void Shrink()
     {
         Vector3 newScale = new Vector3 (0, 0, 0);
-        while (circle.transform.localScale != newScale)
+        //tansform.GetChild(0).localScale = newScale;
+        
+        while (circle.transform.localScale.x >= newScale.x)
         {
             Vector3 nextScale = Vector3.Lerp(circle.transform.localScale, newScale, smoothing * Time.deltaTime);
             //transform.position = new Vector3(newPosition.x, newPosition.y) + offset;
             transform.GetChild(0).localScale = nextScale;
         }
+        
 
 
         //this.transform.GetChild(0).localScale = new Vector3(3,3,3);
@@ -46,7 +49,7 @@ public class ScreenOverlay : MonoBehaviour
     private void Grow()
     {
         Vector3 newScale = new Vector3(10, 10, 10);
-        while (circle.transform.localScale != newScale)
+        while (circle.transform.localScale.x <= newScale.x)
         {
             Vector3 nextScale = Vector3.Lerp(circle.transform.localScale, newScale, smoothing * Time.deltaTime);
             //transform.position = new Vector3(newPosition.x, newPosition.y) + offset;
@@ -54,10 +57,4 @@ public class ScreenOverlay : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
