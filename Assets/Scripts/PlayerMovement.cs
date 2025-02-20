@@ -6,6 +6,7 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     FloorSwitchingBehaviour m_FloorSwitching;
+    ScreenOverlay m_ScreenOverlay;
 
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float jumpForce = 150f;
@@ -57,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
     {
         m_FloorSwitching = GameObject.Find("Ground").GetComponent<FloorSwitchingBehaviour>();
         m_FloorSwitching.ResetFloor();
+
+        m_ScreenOverlay = GameObject.Find("ScreenOverlay").GetComponent<ScreenOverlay>();
+        m_ScreenOverlay.Grow();
 
         currentHealth = startingHealth;
         canMove = true;
@@ -200,7 +204,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //DEATH
             Death();
-            Invoke("Respawn", 0.5f);
+            Invoke("Respawn", 0.75f);
             //Respawn();
             return; //så att dmgsound inte spelas när deathsound ska spelas
         }
@@ -226,6 +230,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Death()
     {
+        m_ScreenOverlay.Shrink();
         deathCount++;
         deathsText.text = deathCount.ToString();
         canMove = false;
@@ -240,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //egentligen vill man ju resetta scenen
         transform.position = spawnPos;
+        m_ScreenOverlay.Gone();
         currentHealth = startingHealth;
         UpdateHealthBar();
         m_FloorSwitching.ResetFloor();
