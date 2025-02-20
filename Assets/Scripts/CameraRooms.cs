@@ -13,6 +13,8 @@ public enum Directions
 
 public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KAMERAN, och HA ON TRIGGER MED TAG - "RoomSwitcher" för att truigga MOVE
 {
+    FloorSwitchingBehaviour m_FloorSwitching;
+
     [SerializeField] private GameObject player;
     [SerializeField] private Camera cam;
     [SerializeField] private Vector3 offset = new Vector3(0, 0, -10f);
@@ -21,9 +23,16 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
     //[SerializeField] private bool left;
     [SerializeField] private Directions dir;
     private bool hasBeenTriggered;
-    private void OnTriggerExit2D(Collider2D collision)
+
+    private void Start()
     {
-        if(hasBeenTriggered)
+        m_FloorSwitching = GameObject.Find("Ground").GetComponent<FloorSwitchingBehaviour>();
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {   //reset blocks
+        m_FloorSwitching.ResetFloor();
+        if (hasBeenTriggered)
         {
             //kör move fast reverse
             Move(false);
