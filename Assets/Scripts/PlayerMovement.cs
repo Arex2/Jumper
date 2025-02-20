@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float jumpForce = 150f;
     [SerializeField] private Transform footL, footR;
-    [SerializeField] private Vector3Int spawnPos;
+    [SerializeField] private Vector3 spawnPos;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private AudioClip jumpSound, pickupSound, dmgSound, deathSound;
     [SerializeField] public AudioClip hitEnemySound;
@@ -307,6 +307,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SetSpawn(Vector3Int pos)
+    {
+        spawnPos = pos;
+    }
+
+    public void SetSpawn(Vector3 pos)
     {
         spawnPos = pos;
     }

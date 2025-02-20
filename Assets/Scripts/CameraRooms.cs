@@ -35,7 +35,7 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
     private bool IsInNewRoom() //compares positions
     {
         float difference = 0;
-        Debug.Log("enter: " + enterPos + " exit: " + exitPos + " difference X: " + (enterPos.x - exitPos.x));    
+        //Debug.Log("enter: " + enterPos + " exit: " + exitPos + " difference X: " + (enterPos.x - exitPos.x));    
         //compare horizontal
         if(dir == Directions.Left || dir == Directions.Right)
         {
