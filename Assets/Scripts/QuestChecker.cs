@@ -5,33 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class QuestChecker : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueBox, textFinished, textUnfinished;
-    [SerializeField] private int questGoal = 3;
+    //[SerializeField] private GameObject dialogueBox, textFinished, textUnfinished;
+    [SerializeField] private int questGoal = 1;
     [SerializeField] private int nextLevel;
 
-    private Animator anim;
+    //private Animator anim;
     private bool levelIsLoading = false;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            dialogueBox.SetActive(true);
+            //dialogueBox.SetActive(true);
             if (collision.GetComponent<PlayerMovement>().keyCount >= questGoal)
             {
-                textFinished.SetActive(true);
-                anim.SetTrigger("Door");
-                Invoke("LoadNextLevel", 3f);
+                //textFinished.SetActive(true);
+                //anim.SetTrigger("Door");
+                Invoke("LoadNextLevel", 1.5f);
                 levelIsLoading = true;
                 
             }
             else
             {
-                textUnfinished.SetActive(true);
+                //textUnfinished.SetActive(true);
             }
         }
     }
@@ -41,6 +41,7 @@ public class QuestChecker : MonoBehaviour
         SceneManager.LoadScene(nextLevel);
     }
 
+    /*
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !levelIsLoading)
@@ -50,4 +51,5 @@ public class QuestChecker : MonoBehaviour
             dialogueBox.SetActive(false);
         }
     }
+    */
 }
