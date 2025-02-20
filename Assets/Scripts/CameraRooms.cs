@@ -29,20 +29,54 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
         m_FloorSwitching = GameObject.Find("Ground").GetComponent<FloorSwitchingBehaviour>();
     }
 
+
+    private Vector3 enterPos;
+    private Vector3 exitPos;
+    private bool IsInNewRoom() //compares positions
+    {
+        float difference = 0;
+        Debug.Log("enter: " + enterPos + " exit: " + exitPos + " difference X: " + (enterPos.x - exitPos.x));    
+        //compare horizontal
+        if(dir == Directions.Left || dir == Directions.Right)
+        {
+            difference = enterPos.x - exitPos.x;
+        }
+        //compare vertical
+        if(dir == Directions.Up || dir == Directions.Down)
+        {
+            difference = enterPos.y - exitPos.y;
+        }
+        difference = Mathf.Abs(difference);
+        if (difference > 0.25)
+            return true;
+        return false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        enterPos = collision.transform.position;
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
-    {   //reset blocks
+    {   
+        exitPos = collision.transform.position;
+        //reset blocks
         m_FloorSwitching.ResetFloor();
-        if (hasBeenTriggered)
+        if (IsInNewRoom())
         {
-            //kör move fast reverse
-            Move(false);
-            hasBeenTriggered = false;
+            if (hasBeenTriggered)
+            {
+                //kör move fast reverse
+                Move(false);
+                hasBeenTriggered = false;
+            }
+            else
+            {
+                Move(true);
+                hasBeenTriggered = true;
+            }
         }
-        else
-        {
-            Move(true);
-            hasBeenTriggered = true;
-        }
+
     }
 
     private void MoveAlongX(int posOrNeg)
