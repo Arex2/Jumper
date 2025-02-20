@@ -160,8 +160,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        audioSource.pitch = 0.5f;
-        audioSource.PlayOneShot(jumpSound, 0.45f);
+        //audioSource.pitch = 0.5f;
+        //audioSource.PlayOneShot(jumpSound, 0.45f);
         rb.AddForce(new Vector2(0,jumpForce));
         //Instantiate(jumpParticles, transform.position, Quaternion.identity);
         PlayJumpParticles();

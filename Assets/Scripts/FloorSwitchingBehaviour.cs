@@ -8,6 +8,10 @@ public class FloorSwitchingBehaviour : MonoBehaviour
     [SerializeField]
     TileCountdown tileCountdown;
 
+    public AudioSource audioSource;
+    [SerializeField]
+    private AudioClip switchSound;
+
     [SerializeField]
     GameObject floorA;
     [SerializeField]
@@ -33,9 +37,16 @@ public class FloorSwitchingBehaviour : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         defaultCol[0] = colA;
         defaultCol[1] = colB;
         defaultCol[2] = colC;
+    }
+
+    private void PlaySwitchSound()
+    {
+        //audioSource.pitch = Random.Range(1f, 1.3f);
+        audioSource.PlayOneShot(switchSound, 0.5f);
     }
 
     public void DefaultColor()
@@ -87,6 +98,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
 
     public void SwitchFloor()
     {
+        PlaySwitchSound();
         jumpCounter++;
         if(activeA)//floorA.activeSelf)//floorA = active  //OBS KAN INTE ANVÄNDA DENNA CHECK NÄR JAG ALDRIG SETTER DE INACTIVE!!! MÅSTE KOLLA P ÅNÅGOT ANNAT SÄTT!!!
         {
