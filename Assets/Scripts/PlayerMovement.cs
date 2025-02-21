@@ -109,12 +109,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    /*
+    
     private void SwitchFloor()
     {
         m_FloorSwitching.SwitchFloor();
     }
-    */
+    
 
     private void FixedUpdate()//"går på ett jämnt intervall 60 gånger i sekunden"
     {

@@ -92,8 +92,10 @@ public class FloorSwitchingBehaviour : MonoBehaviour
         //floorB.SetActive(false);
         SetHidden(floorB);
         //floorC.SetActive(false);
-        SetHidden(floorC);
-        activeC = false;
+        //SetHidden(floorC);
+        //activeC = false;
+        SetVisible(floorC);
+        activeC = true;
     }
 
     public void SwitchFloor()
@@ -125,6 +127,15 @@ public class FloorSwitchingBehaviour : MonoBehaviour
             tileCountdown.ChangeTile(jumpCounter);
         }
 
+        //IF SWITCHING EVERY 3rd GGXGGXGGX instead of GGXXGGXXGGXX
+        if (jumpCounter == 1 && !activeC)
+        {
+            SetVisible(floorC);
+            tileCountdown.ChangeTile(jumpCounter);
+            activeC = true;
+            jumpCounter = 0;
+        }
+
         if (jumpCounter == 2) //jumpCounter%2 == 0)//
         {
             if (activeC)
@@ -132,12 +143,14 @@ public class FloorSwitchingBehaviour : MonoBehaviour
                 SetHidden(floorC);
                 activeC = false;
             }
+            //FOR GGXXGGXXGGXX
+            /*
             else
             {
                 SetVisible(floorC);
                 tileCountdown.ChangeTile(jumpCounter);
                 activeC = true;
-            }
+            }*/
 
             jumpCounter = 0;
         }
