@@ -117,7 +117,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.7
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -612,7 +612,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.6
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -665,7 +665,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 8
+    type: 2
     angle: 5.66
     length: 0.24
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1369,32 +1369,32 @@ ParticleSystem:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0.7921569}
-        key3: {r: 0, g: 0, b: 0, a: 0.6039216}
-        key4: {r: 0, g: 0, b: 0, a: 0.48235294}
-        key5: {r: 0, g: 0, b: 0, a: 0.30980393}
+        key2: {r: 0.735849, g: 0.735849, b: 0.735849, a: 0.7921569}
+        key3: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0.6039216}
+        key4: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 0.48235294}
+        key5: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 0.30980393}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 65535
-        ctime2: 0
-        ctime3: 0
-        ctime4: 0
-        ctime5: 0
+        ctime1: 34502
+        ctime2: 42598
+        ctime3: 50115
+        ctime4: 57247
+        ctime5: 65535
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 18890
-        atime2: 29298
-        atime3: 39514
-        atime4: 54548
+        atime1: 65535
+        atime2: 65535
+        atime3: 65535
+        atime4: 65535
         atime5: 65535
         atime6: 0
         atime7: 0
         m_Mode: 1
         m_ColorSpace: 0
-        m_NumColorKeys: 2
-        m_NumAlphaKeys: 6
+        m_NumColorKeys: 6
+        m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
