@@ -34,6 +34,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
     bool activeC;
 
     int jumpCounter = 0;
+    int jumpCap = 2;
 
     private void Start()
     {
@@ -131,7 +132,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
         if (jumpCounter == 1 && !activeC)
         {
             SetVisible(floorC);
-            tileCountdown.ChangeTile(jumpCounter);
+            tileCountdown.ChangeTile(jumpCap);
             activeC = true;
             jumpCounter = 0;
         }
@@ -194,6 +195,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
         if(floor == floorC)
         {
             //UpdateColor(floor, colC);
+            tileCountdown.ChangeTile(jumpCap);
         }
 
         floor.GetComponent<TilemapCollider2D>().enabled = true;
