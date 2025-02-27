@@ -7,6 +7,12 @@ public class FragmentedKey : MonoBehaviour
     [SerializeField]
     GameObject[] keyParts;
     bool hasBeenCollected;
+    //[SerializeField]
+    //SpriteRenderer spriteR;
+    [SerializeField]
+    private Animator anim;
+    [SerializeField]
+    GameObject player;
     //int keyFragmentCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -17,6 +23,8 @@ public class FragmentedKey : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
         if (CheckAllKeyPartsPickedup() && !hasBeenCollected)
         {
             //form key (animation)
@@ -36,7 +44,9 @@ public class FragmentedKey : MonoBehaviour
 
     private void OnCollected()
     {
-        transform.position = GameObject.Find("Player").transform.position;
+        //transform.position = GameObject.Find("Player").transform.position;
+        //spriteR.enabled = true;
+        anim.SetTrigger("FormKey");
     }
 
     private void OnGroundTouch() //TRIGGER SOMEHOW
