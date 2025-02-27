@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum Directions
@@ -59,6 +60,15 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
     private void OnTriggerExit2D(Collider2D collision)
     {   
         exitPos = collision.transform.position;
+
+        /*
+//only trigger if player is alive
+if (collision.GetComponent<PlayerMovement>().CurrentHealth > 0)
+{
+
+}
+*/
+
         //reset blocks
         m_FloorSwitching.ResetFloor();
         if (IsInNewRoom())
@@ -75,6 +85,8 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
                 hasBeenTriggered = true;
             }
         }
+
+
 
     }
 

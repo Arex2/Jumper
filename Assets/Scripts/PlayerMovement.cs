@@ -225,7 +225,9 @@ public class PlayerMovement : MonoBehaviour
     private void CanMoveAgain()
     {
         if(currentHealth > 0) //kollar att hp är över 0, annars är det death state och då bör spelaren ej kunna gå
+        {
             canMove = true;
+        }
     }
 
     public void Death()
@@ -238,6 +240,7 @@ public class PlayerMovement : MonoBehaviour
         audioSource.PlayOneShot(deathSound, 0.6f);
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
         spriteRenderer.enabled = false;
     }
 
@@ -250,6 +253,7 @@ public class PlayerMovement : MonoBehaviour
         UpdateHealthBar();
         m_FloorSwitching.ResetFloor();
         canMove = true;
+        rb.isKinematic = false;
         spriteRenderer.enabled = true;
 
     }
