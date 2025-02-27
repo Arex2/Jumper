@@ -11,7 +11,7 @@ public class FragmentedKey : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PlayerMovement.onGrounded += OnGroundTouch;
     }
 
     // Update is called once per frame
@@ -23,12 +23,20 @@ public class FragmentedKey : MonoBehaviour
             //give player key that follows player or something
             Debug.Log("Key has formed");
             hasBeenCollected = true;
+            OnCollected();
         }
 
+        /*
         if (Input.GetKeyDown(KeyCode.T)) //fungerar
         {
             OnGroundTouch();
         }
+        */
+    }
+
+    private void OnCollected()
+    {
+        transform.position = GameObject.Find("Player").transform.position;
     }
 
     private void OnGroundTouch() //TRIGGER SOMEHOW

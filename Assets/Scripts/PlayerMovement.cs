@@ -5,6 +5,17 @@ using UnityEngine.UI;
 using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
+    public delegate void OnGrounded();
+    public static event OnGrounded onGrounded;
+
+    public static void RaiseOnGrounded()
+    { 
+        if(onGrounded != null) //only raise if things are subbed to event
+        {
+            onGrounded();
+        }
+    }
+
     FloorSwitchingBehaviour m_FloorSwitching;
     ScreenOverlay m_ScreenOverlay;
 
@@ -300,8 +311,16 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hitL = Physics2D.Raycast(footL.position, Vector2.down, rayDistance, whatIsGround);
         RaycastHit2D hitR = Physics2D.Raycast(footR.position, Vector2.down, rayDistance, whatIsGround);
 
-        if (hitL.collider != null && hitL.collider.CompareTag("Ground") || hitR.collider != null && hitR.collider.CompareTag("Ground"))
+        if (hitL.collider != null && hitL.collider.CompareTag("Ground") 
+            || hitR.collider != null && hitR.collider.CompareTag("Ground")
+            || hitL.collider != null && hitL.collider.CompareTag("SwitchBlock") 
+            || hitR.collider != null && hitR.collider.CompareTag("SwitchBlock"))
         {
+            if (hitL.collider != null && hitL.collider.CompareTag("Ground") || hitR.collider != null && hitR.collider.CompareTag("Ground"))
+            {
+                RaiseOnGrounded();
+            }
+
             return true;
         }
         else
