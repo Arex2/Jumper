@@ -160,6 +160,11 @@ public class PlayerMovement : MonoBehaviour
             keysText.text = keyCount.ToString();
             PlayPickupSound();
         }
+
+        if (collision.CompareTag("KeyFragment"))
+        {
+            audioSource.PlayOneShot(pickupSound, 0.5f);
+        }
     }
 
     private void PlayPickupSound()

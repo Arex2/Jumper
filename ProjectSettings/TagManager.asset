@@ -12,6 +12,7 @@ TagManager:
   - Heart
   - Checkpoint
   - SwitchBlock
+  - KeyFragment
   layers:
   - Default
   - TransparentFX

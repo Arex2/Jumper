@@ -19,6 +19,9 @@ public class FragmentedKey : MonoBehaviour
     [SerializeField]
     Transform target; //door
     public float speed = 0.1f;
+
+    [SerializeField]
+    AudioSource audioSource;
     //int keyFragmentCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -68,6 +71,14 @@ public class FragmentedKey : MonoBehaviour
         GameObject.Find("Player").GetComponent<PlayerMovement>().keyCount++; //INCREASES KEY COUNT BY ONE
         //spriteR.enabled = true;
         anim.SetTrigger("FormKey");
+        //play sudio source
+        //audioSource.Play();
+        Invoke("PlaySound", 0.87f);
+    }
+
+    private void PlaySound()
+    {
+        audioSource.Play();
     }
 
     private void OnGroundTouch() //TRIGGER SOMEHOW
@@ -76,6 +87,8 @@ public class FragmentedKey : MonoBehaviour
         {
             SetKeyPartsActive();
         }
+
+        //BORDE EGENTLIGEN OCKSÅ SPELA ETT SOUND HÄR SOM REPRESENTERAR FAIl
     }
 
     private void SetKeyPartsActive()
