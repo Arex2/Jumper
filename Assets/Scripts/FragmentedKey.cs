@@ -22,6 +22,8 @@ public class FragmentedKey : MonoBehaviour
 
     [SerializeField]
     AudioSource audioSource;
+    [SerializeField]
+    AudioClip keyFormed, fragmentsDropped;
     //int keyFragmentCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -87,17 +89,25 @@ public class FragmentedKey : MonoBehaviour
 
     private void PlaySound()
     {
-        audioSource.Play();
+        //audioSource.pitch = Random.Range(1f, 1.3f);
+        audioSource.volume = 0.4f;
+        audioSource.PlayOneShot(keyFormed, 0.5f);
     }
 
     private void OnGroundTouch() //TRIGGER SOMEHOW
-    { 
-        if(!hasBeenCollected)
+    {
+        if (!hasBeenCollected)
         {
-            SetKeyPartsActive();
+            if (CheckAnyPickedUp())
+            {
+                //BORDE EGENTLIGEN OCKSÅ SPELA ETT SOUND HÄR SOM REPRESENTERAR FAIl
+                //audioSource.pitch = Random.Range(1f, 1.3f);
+                audioSource.volume = 0.2f;
+                audioSource.PlayOneShot(fragmentsDropped, 0.5f);
+            }
+            Invoke("SetKeyPartsActive", 0.2f);
+            //SetKeyPartsActive();
         }
-
-        //BORDE EGENTLIGEN OCKSÅ SPELA ETT SOUND HÄR SOM REPRESENTERAR FAIl
     }
 
     private void SetKeyPartsActive()
@@ -118,5 +128,17 @@ public class FragmentedKey : MonoBehaviour
             }
         }
         return true;
+    }
+
+    private bool CheckAnyPickedUp()
+    {
+        foreach (GameObject g in keyParts)
+        {
+            if (!g.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
