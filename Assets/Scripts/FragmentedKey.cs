@@ -29,11 +29,17 @@ public class FragmentedKey : MonoBehaviour
         PlayerMovement.onGrounded += OnGroundTouch;
     }
     bool temp = false;
+    float variabel = 0f;
     // Update is called once per frame
     void Update()
     {
+        variabel += Time.deltaTime * 3;
+        var sinus = Mathf.Sin(5f + (variabel)) * 2; //för sinus våg
+        var distance = Mathf.Abs(transform.position.x) - Mathf.Abs(target.position.x); //FÖRUTSÄTTER ATT DEN RÖR sig horizontellt
+        //distance = distance / 1; //gör till mellan 0 och 1;
+        sinus = sinus * distance;
 
-        if(!temp)
+        if (!temp)
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
         if (CheckAllKeyPartsPickedup() && !hasBeenCollected)
         {
@@ -53,7 +59,10 @@ public class FragmentedKey : MonoBehaviour
         if(temp)
         {
             var step = speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y + sinus), step);
+            Debug.Log("Sinusvåg: " + sinus + " variabel " + variabel + " distance: " + distance);
+
+
 
         }
 

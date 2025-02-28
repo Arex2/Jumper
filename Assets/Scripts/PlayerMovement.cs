@@ -163,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("KeyFragment"))
         {
-            audioSource.PlayOneShot(pickupSound, 0.5f);
+            PlayPickupSound();
         }
     }
 

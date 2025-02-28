@@ -16,6 +16,17 @@ public class MenuController : MonoBehaviour
         {
             OpenOptions();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //restart scene
+            //Reload();
+        }
+    }
+
+    private void Reload()
+    {
+        SceneManager.LoadSceneAsync(5);
     }
     private void OpenOptions()
     {
