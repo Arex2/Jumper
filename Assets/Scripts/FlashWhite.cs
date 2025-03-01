@@ -16,8 +16,12 @@ public class FlashWhite : MonoBehaviour
 
     private void OnEnable()
     {
-        spriteRenderer.color = Color.white;
-        Invoke("ResetColor", 0.3f);
+        if(spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
+            Invoke("ResetColor", 0.3f);
+        }
+
     }
 
     private void ResetColor()

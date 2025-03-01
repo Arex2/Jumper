@@ -18,7 +18,7 @@ public class SpawnEffect : MonoBehaviour
 
     private void Effect()
     {
-        Debug.Log("Effekt!");
+        //Debug.Log("Effekt!");
         //this.gameObject.GetComponent<SpriteRenderer>().color = Random.ColorHSV();
         if(anim != null)
         anim.SetTrigger("Appear");

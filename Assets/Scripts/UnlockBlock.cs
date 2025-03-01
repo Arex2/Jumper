@@ -22,16 +22,21 @@ public class UnlockBlock : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("BigKey"))
         {
-            Debug.Log("Happens");
-            //destroy key
-            Destroy(collision.gameObject);
+            //check if key is activated
+            if(collision.gameObject.GetComponent<SpriteRenderer>().isVisible)
+            {
+                Debug.Log("Happens");
+                //destroy key
+                Destroy(collision.gameObject);
 
-            //unlock block
+                //unlock block
                 //play unlock sound
-            audioSource.PlayOneShot(unlockSound);
+                audioSource.PlayOneShot(unlockSound);
 
-            //destroy block
-            Invoke("DeleteBlock", 0.2f);
+                //destroy block
+                Invoke("DeleteBlock", 0.4f);
+            }
+
         }
     }
 

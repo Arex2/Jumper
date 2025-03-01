@@ -15337,8 +15337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 7631495690751000486, guid: 3b8a0f9cd5b418845b9f1829728d0cb7, type: 3}
   audioSource: {fileID: 841401944}
-  unlockSound: {fileID: 8300000, guid: d37715128eefe3345a3052b4e61a24c1, type: 3}
-  destructionSound: {fileID: 8300000, guid: 507d7a497411f1e4e8117d98c0c4656e, type: 3}
+  unlockSound: {fileID: 8300000, guid: 507d7a497411f1e4e8117d98c0c4656e, type: 3}
+  destructionSound: {fileID: 8300000, guid: d37715128eefe3345a3052b4e61a24c1, type: 3}
 --- !u!61 &841401946
 BoxCollider2D:
   m_ObjectHideFlags: 0
