@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Hover : MonoBehaviour
 {
-    float variabel = 0f;
-    float speed = 1f;
+    public float variabel = 0f;
+    public float speed = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -13,12 +13,7 @@ public class Hover : MonoBehaviour
         variabel += Random.Range(0.1f, 1f);
     }
 
-
-
-    // Update is called once per frame
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         variabel += Time.deltaTime * speed;
         //var step = height * Time.deltaTime; // calculate distance to move
@@ -29,12 +24,8 @@ public class Hover : MonoBehaviour
         //transform.position();
         //var futureYpos = sinus + transform.position.y;
 
-        transform.position += new Vector3(0, sinus / 10000);
+        transform.position += new Vector3(0, sinus / 1000);
 
         Debug.Log("Varaibel:  " + variabel + "  sinus: " + sinus);
     }
-
-
-
-
 }

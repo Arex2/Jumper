@@ -163,6 +163,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.CompareTag("KeyFragment"))
         {
+            collision.gameObject.SetActive(false);
             PlayPickupSound();
         }
     }
