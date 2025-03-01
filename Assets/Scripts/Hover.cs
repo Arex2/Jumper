@@ -26,6 +26,6 @@ public class Hover : MonoBehaviour
 
         transform.position += new Vector3(0, sinus / 1000);
 
-        Debug.Log("Varaibel:  " + variabel + "  sinus: " + sinus);
+        //Debug.Log("Varaibel:  " + variabel + "  sinus: " + sinus);
     }
 }

@@ -62,7 +62,7 @@ public class FragmentedKey : MonoBehaviour
         {
             var step = speed * Time.deltaTime; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y + sinus), step);
-            Debug.Log("Sinusvåg: " + sinus + " variabel " + variabel + " distance: " + distance);
+            //Debug.Log("Sinusvåg: " + sinus + " variabel " + variabel + " distance: " + distance);
 
 
 
