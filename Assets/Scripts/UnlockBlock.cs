@@ -34,7 +34,7 @@ public class UnlockBlock : MonoBehaviour
                 audioSource.PlayOneShot(unlockSound);
 
                 //destroy block
-                Invoke("DeleteBlock", 0.4f);
+                Invoke("DeleteBlock", 1.4f);
             }
 
         }
@@ -43,22 +43,22 @@ public class UnlockBlock : MonoBehaviour
 
     private void PlayDestroyParticles()
     {
-        Instantiate(destroyParticles, transform.position, Quaternion.identity);
+        Instantiate(destroyParticles, transform.position, Quaternion.Euler(0,180,0));
     }
 
     private void DeleteBlock()
     {
         //play destruction sound
         audioSource.PlayOneShot(destructionSound);
-        //play destruction particle effect
-        PlayDestroyParticles();
         //delete this block
-        Invoke("DestroyBlock", 0.2f);
+        Invoke("DestroyBlock", 0.3f);
     }
 
     private void DestroyBlock()
     {
         Destroy(gameObject);
+        //play destruction particle effect
+        PlayDestroyParticles();
     }
 
 

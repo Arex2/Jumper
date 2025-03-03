@@ -8,9 +8,11 @@ public class FloorSwitchingBehaviour : MonoBehaviour
     [SerializeField]
     TileCountdown tileCountdown;
 
+    /*
     public AudioSource audioSource;
     [SerializeField]
     private AudioClip switchSound;
+    */
 
     [SerializeField]
     GameObject floorA;
@@ -47,7 +49,7 @@ public class FloorSwitchingBehaviour : MonoBehaviour
     private void PlaySwitchSound()
     {
         //audioSource.pitch = Random.Range(1f, 1.3f);
-        audioSource.PlayOneShot(switchSound, 0.5f);
+        //audioSource.PlayOneShot(switchSound, 0.5f);
     }
 
     public void DefaultColor()

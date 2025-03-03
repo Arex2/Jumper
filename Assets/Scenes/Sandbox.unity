@@ -1162,8 +1162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 182045760}
-  audioSource: {fileID: 0}
-  switchSound: {fileID: 0}
   floorA: {fileID: 1860007458}
   floorB: {fileID: 42398356}
   floorC: {fileID: 338957069}
@@ -6542,8 +6540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 731805397}
-  audioSource: {fileID: 0}
-  switchSound: {fileID: 0}
   floorA: {fileID: 1860007458}
   floorB: {fileID: 42398356}
   floorC: {fileID: 338957069}
@@ -13924,8 +13920,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 787966439}
-  audioSource: {fileID: 1860007459}
-  switchSound: {fileID: 8300000, guid: 7de9028d272b8784fbc86788f82ce703, type: 3}
   floorA: {fileID: 1860007458}
   floorB: {fileID: 42398356}
   floorC: {fileID: 338957069}
@@ -15335,10 +15329,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948c2cdf98f175e4aab42d3e9a3c10b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyParticles: {fileID: 7631495690751000486, guid: 3b8a0f9cd5b418845b9f1829728d0cb7, type: 3}
+  destroyParticles: {fileID: 7631495690751000486, guid: 14b0b41edf093b447931dff57f7ca22c, type: 3}
   audioSource: {fileID: 841401944}
-  unlockSound: {fileID: 8300000, guid: 507d7a497411f1e4e8117d98c0c4656e, type: 3}
-  destructionSound: {fileID: 8300000, guid: d37715128eefe3345a3052b4e61a24c1, type: 3}
+  unlockSound: {fileID: 8300000, guid: 048ff1734f0c32d48bb67fa1c5160e85, type: 3}
+  destructionSound: {fileID: 8300000, guid: 06349a5062fd27b46868d98b745f066e, type: 3}
 --- !u!61 &841401946
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17909,7 +17903,7 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1088
-  jumpSound: {fileID: 8300000, guid: 7de9028d272b8784fbc86788f82ce703, type: 3}
+  jumpSound: {fileID: 8300000, guid: 11ca541dc1eccef41bedc5e1df199a2d, type: 3}
   pickupSound: {fileID: 8300000, guid: be029a45c6f3dd644bcccc4da6bb9f34, type: 3}
   dmgSound: {fileID: 8300000, guid: d37715128eefe3345a3052b4e61a24c1, type: 3}
   deathSound: {fileID: 8300000, guid: d37715128eefe3345a3052b4e61a24c1, type: 3}
