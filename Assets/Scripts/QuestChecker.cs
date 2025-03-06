@@ -23,6 +23,7 @@ public class QuestChecker : MonoBehaviour
             //dialogueBox.SetActive(true);
             if (collision.GetComponent<PlayerMovement>().keyCount >= questGoal)
             {
+                Debug.Log("keycount: " + collision.GetComponent<PlayerMovement>().keyCount);
                 //textFinished.SetActive(true);
                 //anim.SetTrigger("Door");
                 Invoke("LoadNextLevel", 1.5f);

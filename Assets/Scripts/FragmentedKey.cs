@@ -24,6 +24,9 @@ public class FragmentedKey : MonoBehaviour
     AudioSource audioSource;
     [SerializeField]
     AudioClip keyFormed, fragmentsDropped;
+
+    public bool followPlayer;
+
     //int keyFragmentCount = 0;
     // Start is called before the first frame update
     void Start()
@@ -41,7 +44,7 @@ public class FragmentedKey : MonoBehaviour
         //distance = distance / 1; //gör till mellan 0 och 1;
         sinus = sinus * distance;
 
-        if (!temp)
+        if (!temp)// && followPlayer)
         transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z);
         if (CheckAllKeyPartsPickedup() && !hasBeenCollected)
         {
@@ -80,7 +83,7 @@ public class FragmentedKey : MonoBehaviour
 
     private void OnCollected()
     {
-        GameObject.Find("Player").GetComponent<PlayerMovement>().keyCount++; //INCREASES KEY COUNT BY ONE
+        //GameObject.Find("Player").GetComponent<PlayerMovement>().keyCount++; //INCREASES KEY COUNT BY ONE
         //spriteR.enabled = true;
         anim.SetTrigger("FormKey");
         //play sudio source

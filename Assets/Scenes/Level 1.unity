@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questGoal: 1
-  nextLevel: 3
+  nextLevel: 6
 --- !u!1 &288033859
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,8 +4557,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 719476667}
-  audioSource: {fileID: 1423174189}
-  switchSound: {fileID: 8300000, guid: 9f00002817126cc498dc40047714466f, type: 3}
   floorA: {fileID: 1423174182}
   floorB: {fileID: 1503496442}
   floorC: {fileID: 2123240119}
@@ -18134,8 +18132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 1527957426}
-  audioSource: {fileID: 0}
-  switchSound: {fileID: 0}
   floorA: {fileID: 1423174182}
   floorB: {fileID: 1503496442}
   floorC: {fileID: 2123240119}
@@ -26230,8 +26226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 1750358323}
-  audioSource: {fileID: 0}
-  switchSound: {fileID: 0}
   floorA: {fileID: 1423174182}
   floorB: {fileID: 1503496442}
   floorC: {fileID: 2123240119}
@@ -27639,7 +27633,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 77c39d298507def4d87fe8a19692e383, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.475
+  m_Volume: 0.38
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -29550,8 +29544,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCountdown: {fileID: 2124616121}
-  audioSource: {fileID: 0}
-  switchSound: {fileID: 0}
   floorA: {fileID: 1423174182}
   floorB: {fileID: 1503496442}
   floorC: {fileID: 2123240119}

@@ -76,11 +76,13 @@ public class PlayerMovement : MonoBehaviour
         currentHealth = startingHealth;
         canMove = true;
 
+        /*
         coinText.text = coinsCollected.ToString();
         deathsText.text = deathCount.ToString();
         keysText.text = keyCount.ToString();
 
         //coinText.text = "" + coinsCollected;
+        */
 
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -143,7 +145,7 @@ public class PlayerMovement : MonoBehaviour
             PlayItemParticles(collision);
             Destroy(collision.gameObject);
             coinsCollected++;
-            coinText.text = coinsCollected.ToString();
+            //coinText.text = coinsCollected.ToString();
             PlayPickupSound();
         }
 
@@ -157,14 +159,20 @@ public class PlayerMovement : MonoBehaviour
             PlayItemParticles(collision);
             Destroy(collision.gameObject);
             keyCount++;
-            keysText.text = keyCount.ToString();
+            //keysText.text = keyCount.ToString();
             PlayPickupSound();
         }
 
         if (collision.CompareTag("KeyFragment"))
         {
             collision.gameObject.SetActive(false);
+            if(!audioSource.isPlaying)
             PlayPickupSound();
+        }
+
+        if(collision.CompareTag("BigKey"))
+        {
+            collision.GetComponent<FragmentedKey>().followPlayer = true;
         }
     }
 
@@ -215,7 +223,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int dmgAmount)
     {
         currentHealth -= dmgAmount;
-        UpdateHealthBar();
+        //UpdateHealthBar();
 
         if (currentHealth <= 0)
         {
@@ -251,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_ScreenOverlay.Shrink();
         deathCount++;
-        deathsText.text = deathCount.ToString();
+        //deathsText.text = deathCount.ToString();
         canMove = false;
         audioSource.pitch = 0.4f;
         audioSource.PlayOneShot(deathSound, 0.6f);
@@ -267,7 +275,7 @@ public class PlayerMovement : MonoBehaviour
         transform.position = spawnPos;
         m_ScreenOverlay.Gone();
         currentHealth = startingHealth;
-        UpdateHealthBar();
+        //UpdateHealthBar();
         m_FloorSwitching.ResetFloor();
         canMove = true;
         rb.isKinematic = false;
@@ -286,7 +294,7 @@ public class PlayerMovement : MonoBehaviour
             int healthToRestore = pickupItem.GetComponent<HealthPickup>().healthAmount;
             currentHealth += healthToRestore; // vill bara egentligen lägga till 1 health oavsätt (1 pickup = 1 health) ++; hade ju varit cleaner
             PlayPickupSound();
-            UpdateHealthBar();
+            //UpdateHealthBar();
             PlayItemParticles(pickupItem.GetComponent<Collider2D>());
             Destroy(pickupItem);
 
