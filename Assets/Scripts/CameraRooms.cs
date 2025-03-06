@@ -54,37 +54,42 @@ public class CameraRooms : MonoBehaviour  //OBS BORDE ÄNDRA, LÄGGA DET HÄR PÅ KA
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.CompareTag("Player"))
         enterPos = collision.transform.position;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
-    {   
-        exitPos = collision.transform.position;
-
-        /*
-//only trigger if player is alive
-if (collision.GetComponent<PlayerMovement>().CurrentHealth > 0)
-{
-
-}
-*/
-
-        //reset blocks
-        m_FloorSwitching.ResetFloor();
-        if (IsInNewRoom())
+    {
+        if (collision.CompareTag("Player"))
         {
-            if (hasBeenTriggered)
+            exitPos = collision.transform.position;
+
+            /*
+    //only trigger if player is alive
+    if (collision.GetComponent<PlayerMovement>().CurrentHealth > 0)
+    {
+
+    }
+    */
+
+            //reset blocks
+            m_FloorSwitching.ResetFloor();
+            if (IsInNewRoom())
             {
-                //kör move fast reverse
-                Move(false);
-                hasBeenTriggered = false;
-            }
-            else
-            {
-                Move(true);
-                hasBeenTriggered = true;
+                if (hasBeenTriggered)
+                {
+                    //kör move fast reverse
+                    Move(false);
+                    hasBeenTriggered = false;
+                }
+                else
+                {
+                    Move(true);
+                    hasBeenTriggered = true;
+                }
             }
         }
+
 
 
 
