@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questGoal: 1
-  nextLevel: 6
+  nextLevel: 5
 --- !u!1 &288033859
 GameObject:
   m_ObjectHideFlags: 0
