@@ -11,6 +11,9 @@ public class UnlockBlock : MonoBehaviour
     [SerializeField]
     AudioClip unlockSound, destructionSound;
 
+    bool unlocking;
+    bool keyWaitTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,26 +21,63 @@ public class UnlockBlock : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("BigKey"))
         {
-            //check if key is activated
-            if(collision.gameObject.GetComponent<SpriteRenderer>().isVisible)
+
+            if (keyWaitTimer)
             {
-                Debug.Log("Happens");
                 //destroy key
                 Destroy(collision.gameObject);
-
-                //unlock block
-                //play unlock sound
-                audioSource.PlayOneShot(unlockSound);
-
-                //destroy block
-                Invoke("DeleteBlock", 1.4f);
             }
+            if (!unlocking)
+            {
 
+                if ("KeyFormed" == collision.gameObject.GetComponent<Animator>().GetCurrentAnimatorClipInfo(0)[0].clip.name) //GetCurrentAnimatorStateInfo(0).IsName("");
+                {
+                    unlocking = true;
+                    //Debug.Log("Formed");
+                    //Debug.Log("Happens");
+
+                    Invoke("KeyWaitTimer", 0.2f);
+
+
+                    //unlock block
+                    //play unlock sound
+                    audioSource.PlayOneShot(unlockSound);
+
+                    //destroy block
+                    Invoke("DeleteBlock", 1.4f);
+                }
+
+
+                //else
+                //Debug.Log("not formed");
+                /*
+                //check if key is activated
+                if(collision.gameObject.GetComponent<SpriteRenderer>().isVisible) // && ANIMATION IS DONE PLAYING
+                {
+                    Debug.Log("Happens");
+                    //destroy key
+                    Destroy(collision.gameObject);
+
+                    //unlock block
+                    //play unlock sound
+                    audioSource.PlayOneShot(unlockSound);
+
+                    //destroy block
+                    Invoke("DeleteBlock", 1.4f);
+                }
+                */
+
+            }
         }
+    }
+
+    private void KeyWaitTimer()
+    {
+        keyWaitTimer = true;
     }
 
 
