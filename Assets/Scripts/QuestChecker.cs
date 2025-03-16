@@ -26,7 +26,7 @@ public class QuestChecker : MonoBehaviour
                 Debug.Log("keycount: " + collision.GetComponent<PlayerMovement>().keyCount);
                 //textFinished.SetActive(true);
                 //anim.SetTrigger("Door");
-                Invoke("LoadNextLevel", 1.5f);
+                Invoke("LoadNextLevel", 0.5f);
                 levelIsLoading = true;
                 
             }
