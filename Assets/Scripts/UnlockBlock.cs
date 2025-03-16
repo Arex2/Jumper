@@ -23,7 +23,7 @@ public class UnlockBlock : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("BigKey"))
+        if(collision.gameObject.CompareTag("BigKey") && collision.gameObject.GetComponent<SpriteRenderer>().isVisible)
         {
 
             if (keyWaitTimer)

@@ -33,6 +33,27 @@ public class FragmentedKey : MonoBehaviour
     {
         PlayerMovement.onGrounded += OnGroundTouch;
     }
+
+    /*
+    private void OnDestroy()
+    {
+        CancelInvoke();
+        PlayerMovement.onGrounded -= this.OnGroundTouch;
+    }
+    */
+
+    /*
+    private void OnEnable()
+    {
+        PlayerMovement.onGrounded += OnGroundTouch;
+    }
+
+
+    private void OnDestroy()
+    {
+        PlayerMovement.onGrounded -= OnGroundTouch;
+    }*/
+
     bool temp = false;
     float variabel = 0f;
     // Update is called once per frame
@@ -59,7 +80,7 @@ public class FragmentedKey : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.V))
         {
-            temp = true;
+            //temp = true;
         }
         if(temp)
         {
