@@ -17,7 +17,6 @@ public class ScreenOverlay : MonoBehaviour
     void Start()
     {
         circle = this.transform.GetChild(0).gameObject;
-        //anim = GetComponent<Animator>();
     }
 
     void LateUpdate()
@@ -29,8 +28,6 @@ public class ScreenOverlay : MonoBehaviour
             anim.SetTrigger("awake");
         if (Input.GetKeyDown(KeyCode.C))
             anim.SetTrigger("death");
-        //transform.position = new Vector3(newPosition.x, transform.position.y) + offset; //the camera will not move along the Y axis
-        //transform.position = newPosition;
     }
     public void Gone()
     {
@@ -40,32 +37,11 @@ public class ScreenOverlay : MonoBehaviour
     public void Shrink()
     {
         anim.SetTrigger("death");
-        /*
-        Vector3 newScale = new Vector3 (0, 0, 0);
-        //tansform.GetChild(0).localScale = newScale;
-        
-        while (circle.transform.localScale.x >= newScale.x)
-        {
-            Vector3 nextScale = Vector3.Lerp(circle.transform.localScale, newScale, smoothing * Time.deltaTime);
-            //transform.position = new Vector3(newPosition.x, newPosition.y) + offset;
-            transform.GetChild(0).localScale = nextScale;
-        }
-        */
-
-        //this.transform.GetChild(0).localScale = new Vector3(3,3,3);
     }
 
     public void Grow()
     {
         anim.SetTrigger("awake");
-        /*
-        Vector3 newScale = new Vector3(10, 10, 10);
-        while (circle.transform.localScale.x <= newScale.x)
-        {
-            Vector3 nextScale = Vector3.Lerp(circle.transform.localScale, newScale, smoothing * Time.deltaTime);
-            //transform.position = new Vector3(newPosition.x, newPosition.y) + offset;
-            transform.GetChild(0).localScale = nextScale;
-        }*/
     }
 
 }

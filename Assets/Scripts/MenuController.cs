@@ -8,6 +8,8 @@ public class MenuController : MonoBehaviour
 
     public void Update()
     {
+        //UNUSED.
+        /*
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetSceneByName("ChangeColorsScene").isLoaded)
         {
             CloseOptions();
@@ -16,6 +18,7 @@ public class MenuController : MonoBehaviour
         {
             OpenOptions();
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.R))
         {

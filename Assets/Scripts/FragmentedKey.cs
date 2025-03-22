@@ -76,62 +76,46 @@ public class FragmentedKey : MonoBehaviour
             OnCollected();
         }
 
-        //efter animation är done move towards target door
 
-        if(Input.GetKeyDown(KeyCode.V))
+        //UNUSED NOW!!
+        //efter animation är done move towards target door
+        if (Input.GetKeyDown(KeyCode.V))
         {
             //temp = true;
         }
         if(temp)
         {
             var step = speed * Time.deltaTime; // calculate distance to move
-            transform.position = Vector3.MoveTowards(transform.position, target.position, step);  //Vector3.MoveTowards(transform.position, new Vector3(target.position.x, target.position.y + sinus), step);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, step);  
             transform.position = new Vector3(transform.position.x, transform.position.y + sinus/500);
             //Debug.Log("Sinusvåg: " + sinus + " variabel " + variabel + " distance: " + distance);
-
-
-
         }
 
-
-        /*
-        if (Input.GetKeyDown(KeyCode.T)) //fungerar
-        {
-            OnGroundTouch();
-        }
-        */
     }
 
     private void OnCollected()
     {
-        //GameObject.Find("Player").GetComponent<PlayerMovement>().keyCount++; //INCREASES KEY COUNT BY ONE
-        //spriteR.enabled = true;
         anim.SetTrigger("FormKey");
         //play sudio source
-        //audioSource.Play();
         Invoke("PlaySound", 0.87f);
     }
 
     private void PlaySound()
     {
-        //audioSource.pitch = Random.Range(1f, 1.3f);
         audioSource.volume = 0.4f;
         audioSource.PlayOneShot(keyFormed, 0.5f);
     }
 
-    private void OnGroundTouch() //TRIGGER SOMEHOW
+    private void OnGroundTouch()
     {
         if (!hasBeenCollected)
         {
             if (CheckAnyPickedUp())
             {
-                //BORDE EGENTLIGEN OCKSÅ SPELA ETT SOUND HÄR SOM REPRESENTERAR FAIl
-                //audioSource.pitch = Random.Range(1f, 1.3f);
                 audioSource.volume = 0.2f;
                 audioSource.PlayOneShot(fragmentsDropped, 0.5f);
             }
             Invoke("SetKeyPartsActive", 0.2f);
-            //SetKeyPartsActive();
         }
     }
 
